@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="p-3 m-3">
+
+        
+        <div class="col-lg-5 rounded mx-auto border pt-2">
+            <div class="text-center col">
+            
+                  <hr>
+            </div>
+            <h3 class="alert alert-success rounded-pill" style="text-align:center; font-size: 14px">Create an Account</h3>
+            <form action="/signup" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- firstname -->
+            <div class="row">
+
+
+                <div class="form-group col-md-6">
+                    <label for="">First Name</label>
+                    <input type="text" name="firstName"
+                     id="" value="{{values.firstName}}" class="form-control form-control-sm"
+                     placeholder="">
+                </div>
+
+                <!-- last name -->
+                <div class="form-group col-md-6">
+                    <label for="">Last Name</label>
+                    <input type="text" name="lastName"
+                    id="" value="{{values.lastName}}" class="form-control form-control-sm"
+                    >
+                </div>
+</div>
+                <!-- phone -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Phone</label>
+                    <input type="text" name="phoneNumber_1"
+                    id="" class="form-control form-control-sm"
+                    value="{{values.phoneNumber_1}}"
+                    placeholder="9876543210"
+                    >
+                </div>
+
+                 <div class="form-group col-md-6">
+                    <label for="">Other Phone</label>
+                    <input type="text" name="phoneNumber_2"
+                    id="" class="form-control form-control-sm"
+                    value="{{values.phoneNumber_2}}"
+                    placeholder="7176543550"
+                    >
+                </div>
+</div>
+
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="abc@gmail.com">
+                </div>
+
+            <!-- country -->
+                <div class="form-group">
+                    <label for="">Country</label>
+                    <input required type="text" name="country" id=""
+                    value="{{values.country}}"
+                    class=" form-control-sm form-control" placeholder="Tanzania">
+                </div>
+
+            <!-- city -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="">City</label>
+                    <input required type="text" name="city" id=""
+                    value="{{values.city}}"
+                    class=" form-control-sm form-control" placeholder="Dodoma">
+                </div>
+
+            <!-- Addres -->
+                <div class="form-group col-md-6">
+                    <label for="">Address</label>
+                    <input required type="text" name="address" id=""
+                    value="{{values.address}}"
+                    class=" form-control-sm form-control" placeholder="786 Nkuhungu">
+                </div>
+ </div>
+
+                <!-- password -->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                     class="form-control form-control-sm">
+                </div>
+
+                <hr>
+                <button type="submit" class="btn btn-sm btn-success col-lg-12">Create an account</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
