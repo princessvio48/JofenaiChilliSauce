@@ -1,13 +1,9 @@
-# JofenaiChilliSauce
-JofenaiChillSauce
+# jofenai pilipili documentation
+### requirements
+1. Python 3.10.4 and above 
+2. django 4.0.4
+3. virtualenv
+3. postgres database management systems
 
-# requirement 
-1: python3
-2: django 4.0.4
-install in virtual environment
-command:
-pip install django
-
-3:rest framework
-command to install:
-
+### installation of different requirements
+[This link](https://docs.djangoproject.com/en/4.1/intro/install/) installation.

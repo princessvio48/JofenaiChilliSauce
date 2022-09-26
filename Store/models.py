@@ -32,7 +32,7 @@ class Product(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    order_status = models.BooleanField(default=False)
+    order_status = models.BooleanField(default=True)
     complete = models.BooleanField(default=False) 
     transaction_id = models.CharField(max_length = 100, null = True)
 
