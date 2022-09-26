@@ -6,12 +6,14 @@
 3. postgres database management systems
 
 ### installation of different requirements
-[installation django](https://docs.djangoproject.com/en/4.1/intro/install/) this link contain installation of
+[install django](https://docs.djangoproject.com/en/4.1/intro/install/) this link contain installation of
 * python
 * django
 * virtualenv
 .
 
-[installation postgres](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) this link instruct how to install postgres
+[install postgres](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) this link instruct how to install postgres
 .
 
+## note
+if you add product must given status to true automatically field of that product will not be shipped
