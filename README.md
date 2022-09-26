@@ -28,3 +28,5 @@ then provide
 * password
 * confirm password then enter
 
+After creating superuser you can login in system and adding products and test for ordering, by creating another user or using anonymous user. Because we success to process order for both user
+
