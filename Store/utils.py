@@ -67,7 +67,7 @@ def guestOrder(request, data):
 	user, created = User.objects.get_or_create(
 			email=email,
 			)
-	user.name = name
+	user.username = name
 	user.save()
 
 	order = Order.objects.create(

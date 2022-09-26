@@ -16,4 +16,15 @@
 .
 
 ## note
-if you add product must given status to true automatically field of that product will not be shipped
+if you add product must given status to true automatically field of that product will not be shipped.
+must be yes among(yes, unknown and no options)
+
+
+### creating super user move to the base directory of project and run the command
+###### python manage.py createsuperuser 
+then provide
+* username
+* email
+* password
+* confirm password then enter
+
