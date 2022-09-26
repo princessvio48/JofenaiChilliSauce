@@ -1,0 +1,27 @@
+{% extends 'Store/base.html' %}
+
+<!-- TITLE OF PAGE -->
+{% block title %} login {% endblock %}
+
+<!-- CONTENT GOES HERE -->
+{% block content %}
+<!-- CONTENT HERE -->
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<h3>Login </h3>
+<div>
+    <form method="post">
+
+        {% csrf_token %} {{form.as_p}}
+        <input type="submit" value="Login">
+    </form>
+</div>
+<hr>
+
+<!-- END CONTENT -->
+{% endblock %}

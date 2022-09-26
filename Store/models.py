@@ -1,103 +1,87 @@
 from django.db import models
 from django_countries.fields import CountryField
-import datetime
+
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
     name=models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
 
-    @staticmethod
-    def get_all_categories():
-        return Category.objects.all()
+class Product(models.Model):
+    name = models.CharField(max_length=60)
+    price = models.IntegerField(default=0)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    description = models.TextField(default='', blank=True, null=True)
+    image = models.ImageField(upload_to='products/')
 
     def __str__(self):
         return self.name
 
-
-class Customer(models.Model):
-    CITIES = (
-        ('Ars', 'Arusha'),
-        ('Bkb', 'Bukoba'),
-        ('Dsm', 'Dar es salaam'),
-        ('Mwz', 'Mwanza'),
-        ('Dom', 'Dodoma'),
-        ('klm', 'Kilimanjaro'),
-        ('Irg', 'Iringa'),
-        ('Njo', 'Njombe'),
-        ('Tng', 'Tanga'),
-        ('Mby', 'Mbeya'),
-        ('Mor', 'Morogoro'),
-        ('Sng', 'Singida'),
-
-    )
-
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
-    phoneNumber_1 = models.CharField(max_length=15)
-    phoneNumber_2 = models.CharField(max_length=15, null=True)
-    country = models.CharField(max_length=50, null=True)
-    city = models.CharField(max_length=10, choices=CITIES)
-    address = models.CharField(max_length=254)
-    email = models.EmailField(max_length=254)
-    password=models.CharField(max_length=100)
-
-    # to save the data
-    def register(self):
-        self.save()
-
-    @staticmethod
-    def get_customer_by_email(email):
+    @property
+    def imageURL(self):
         try:
-            return Customer.objects.get(email=email)
+            url = self.image.url
         except:
-            return False
-
-    def isExists(self):
-        if Customer.objects.filter(email=self.email):
-            return True
-
-        return False
-
-
-class Products(models.Model):
-    name = models.CharField(max_length=60)
-    price = models.IntegerField(default=0)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.CharField(
-        max_length=250, default='', blank=True, null=True)
-    image = models.ImageField(upload_to='uploads/products/')
-
-    @staticmethod
-    def get_products_by_id(ids):
-        return Products.objects.filter(id__in=ids)
-
-    @staticmethod
-    def get_all_products():
-        return Products.objects.all()
-
-    @staticmethod
-    def get_all_products_by_categoryid(category_id):
-        if category_id:
-            return Products.objects.filter(category=category_id)
-        else:
-            return Products.get_all_products()
-
-
+            url = ''
+        return url
+    
 class Order(models.Model):
-    product = models.ForeignKey(Products,
-                                on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer,
-                                 on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    price = models.IntegerField()
-    address = models.CharField(max_length=50, default='', blank=True)
-    phone = models.CharField(max_length=50, default='', blank=True)
-    date = models.DateField(default=datetime.datetime.today)
-    status = models.BooleanField(default=False)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date_ordered = models.DateTimeField(auto_now_add=True)
+    order_status = models.BooleanField(default=False)
+    complete = models.BooleanField(default=False) 
+    transaction_id = models.CharField(max_length = 100, null = True)
 
-    def placeOrder(self):
-        self.save()
+    def __str__(self):
+            return str(self.id)
+        
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderproduct_set.all()
+        for i in orderitems:
+            if i != '':
+                shipping = True
+        return shipping
 
-    @staticmethod
-    def get_orders_by_customer(customer_id):
-        return Order.objects.filter(customer=customer_id).order_by('-date')
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderproduct_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total 
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderproduct_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total 
+
+    
+    
+class OrderProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+	
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
+    
+
+class ShippingAddress(models.Model):
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+	order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+	address = models.CharField(max_length=200, null=False)
+	city = models.CharField(max_length=200, null=False)
+	state = models.CharField(max_length=200, null=False)
+	zipcode = models.CharField(max_length=200, null=False)
+	date_added = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.address

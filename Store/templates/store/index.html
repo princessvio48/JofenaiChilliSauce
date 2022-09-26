@@ -1,0 +1,52 @@
+{% extends 'Store/base.html' %}
+
+<!-- TITLE OF PAGE -->
+{% block title %} jofenaichilisauce {% endblock %}
+
+<!-- CONTENT GOES HERE -->
+{% block content %}
+<!-- CONTENT HERE -->
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!-- CATEGORY -->
+<div class="mx-1">
+    <h3> Buy by Category</h3>
+    {% for category in category %}
+    <div>
+        <a href="{% url 'login' %}">{{category.name}}</a>
+    </div>
+
+    {% endfor %}
+
+</div>
+<!-- PRODUCTS -->
+
+
+<h3 class="mx-1">({{product.count}}) available products</h3>
+<div class="row mx-1">
+
+    {% for product in product %}
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+
+            <h4 style="display: inline-block; float:right"><strong>${{product.price}}</strong></h4>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- END CONTENT -->
+{% endblock %}

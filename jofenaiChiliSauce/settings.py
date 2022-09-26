@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'jofenaiChiliSauce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Pilipili',
+        'NAME': 'pilipili',
         'PASSWORD': 'Catherine@27',
         'USER': 'postgres',
         'HOST': 'localhost',
