@@ -16,6 +16,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(default='', blank=True, null=True)
     image = models.ImageField(upload_to='products/')
+    status = models.BooleanField(default=False,null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -43,7 +44,7 @@ class Order(models.Model):
         shipping = False
         orderitems = self.orderproduct_set.all()
         for i in orderitems:
-            if i != '':
+            if i.product.status == True:
                 shipping = True
         return shipping
 

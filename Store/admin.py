@@ -11,7 +11,7 @@ class OrderProductAdmin(admin.ModelAdmin):
     list_display = ('product','order','quantity','created_at','updated_at')
 class ProductAdmin(admin.ModelAdmin):
     #fields = ['retail', 'order_date','order_status','complete']
-    list_display = ('name','price','category','description','image')
+    list_display = ('name','price','category','description','image','status')
 class ShippingAddressAdmin(admin.ModelAdmin):
     #fields = ['retail', 'order_date','order_status','complete']
     list_display = ('user','order','address','city','state','zipcode','date_added')
