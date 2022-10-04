@@ -61,7 +61,6 @@ def register(request):
             return redirect("login")  
     else:
         form = UserCreateForm()
-        print(form)
     return render(request, 'store/register.html', context={"form":form})
 
 
@@ -107,6 +106,7 @@ def updateItem(request):
 
 	if action == 'add':
 		orderItem.quantity = (orderItem.quantity + 1)
+
 	elif action == 'remove':
 		orderItem.quantity = (orderItem.quantity - 1)
 
