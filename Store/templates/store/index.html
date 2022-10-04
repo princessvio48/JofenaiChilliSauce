@@ -15,7 +15,7 @@
 {% endif %}
 
 <!-- CATEGORY -->
-<div class="mx-1">
+<!-- <div class="mx-1">
     <h3> Buy by Category</h3>
     {% for category in category %}
     <div>
@@ -24,7 +24,7 @@
 
     {% endfor %}
 
-</div>
+</div> -->
 <!-- PRODUCTS -->
 
 
@@ -32,8 +32,8 @@
 <div class="row mx-1">
 
     {% for product in product %}
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{{product.imageURL}}">
+    <div class="col-lg-3">
+        <img class="thumbnail" src="{{product.imageURL}}" width="500" height="500">
         <div class="box-element product">
             <h6><strong>{{product.name}}</strong></h6>
             <hr>

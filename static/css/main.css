@@ -101,3 +101,181 @@ h6 {
 .hidden {
     display: none!important;
 }
+
+
+/***************************************************************/
+
+
+/***********              COLORS                ***************/
+
+
+/***************************************************************/
+
+:root {
+    --color-black: 0 0 0;
+    --color-blue: rgb(10, 7, 19);
+    --color-blue-back: rgba(30, 4, 97, 0.5);
+    --color-white: rgba(252, 251, 253, 1);
+    --color-teal: rgb(0, 128, 128);
+    --color-gray-gradient: rgba(242, 242, 242, 0.1);
+    --color-blue-gradient: rgba(10, 7, 19, 0.9);
+    --color-blue-gradient-1: rgba(10, 7, 19, 0.2);
+    --color-gray: rgba(218, 247, 166, 0.5);
+    --color-purple: rgb(40, 34, 44, 0.4);
+}
+
+
+/***************************************************************/
+
+
+/***********           CLASSES   COLORS          ***************/
+
+
+/***************************************************************/
+
+.bg-purple {
+    background-color: var(--color-purple) !important;
+    color: var(--color-blue);
+}
+
+.box-shadow {
+    box-shadow: 0 0 0 2em #F4AAB9, 0 0 0 4em #66CCFF;
+    margin: 4em;
+    padding: 1em;
+}
+
+.bg-gray {
+    padding: 10px;
+    background-color: var(--color-gray) !important;
+    color: var(--color-blue) !important;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.bg-gray-1 {
+    padding: 10px;
+    background-color: var(--color-gray) !important;
+    color: var(--color-blue) !important;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.bg-white {
+    padding: 10px;
+    background-color: var(--color-white) !important;
+    color: var(--color-blue) !important;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.bg-white-1 {
+    padding: 10px;
+    background-color: var(--color-white) !important;
+    color: var(--color-blue) !important;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.text-clr-white {
+    color: var(--color-white);
+}
+
+.text-clr-blue {
+    color: var(--color-blue)
+}
+
+.bg-clr-teal {
+    background-color: var(--color-teal);
+}
+
+.bg-clr-white {
+    background-color: var(--color-white);
+}
+
+.bg-clr-blue-black {
+    background-color: var(--color-blue-back);
+}
+
+.bg-clr-blue {
+    background-color: var(--color-blue);
+}
+
+.bg-clr-blue-gradient {
+    background-color: var(--color-blue-gradient);
+}
+
+.bg-clr-gray-gradient {
+    background-color: var(--color-gray-gradient);
+}
+
+.bg-blue {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+}
+
+
+/***************************************************************/
+
+
+/***********            LOGIN & REGISTER         ***************/
+
+
+/***************************************************************/
+
+.bg-img {
+    position: fixed;
+    left: 0%;
+    height: 90vh;
+    width: 100%;
+    z-index: -1;
+}
+
+.login,
+.register {
+    margin: auto;
+    width: 500px;
+    border-radius: 5px;
+    padding: 20px;
+    color: var(--color-white);
+    background-color: var(--color-blue-gradient-1)
+}
+
+.height-div {
+    height: 100vh;
+}
+
+.form-img-guide {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+input[type=date],
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+    width: 100%;
+    padding: 5px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid var(--color-gray-gradient);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: var(--color-teal);
+    color: white;
+    padding: 5px 8px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 1px 5px;
+}

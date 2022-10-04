@@ -1,27 +1,38 @@
-{% extends 'Store/base.html' %}
+<!DOCTYPE html> {% load static %}
+<html lang="en">
 
-<!-- TITLE OF PAGE -->
-{% block title %} login {% endblock %}
 
-<!-- CONTENT GOES HERE -->
-{% block content %}
-<!-- CONTENT HERE -->
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-<h3>Login </h3>
-<div>
-    <form method="post">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!-- TITLE OF PAGE -->
 
-        {% csrf_token %} {{form.as_p}}
-        <input type="submit" value="Login">
-    </form>
-</div>
-<hr>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CONTENT GOES HERE -->
+</head>
 
-<!-- END CONTENT -->
-{% endblock %}
+<body>
+    <div class="flex bg-clr-blue-gradient  height-div">
+
+        <div class="my-5 m-auto bg-clr-blue ">
+            <img src="{% static 'images/pilipili3.jpg' %}" alt="" class="bg-img">
+        </div>
+        <div class="register my-5 mx-auto ">
+
+            <div class="text-align-center bg-clr-teal ">
+                <h3 class="text-clr-white">JofenaiPilipiliSauce</h3>
+            </div>
+            <form method="POST">
+                {% csrf_token %} {{form.as_p}}
+
+                <input type="submit" value="Login">
+            </form>
+            have an account? <a href="{% url 'register' %}"><strong>register here</strong></a>
+        </div>
+    </div>
+</body>
+
+</html>

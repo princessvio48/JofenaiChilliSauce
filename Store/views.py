@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import  check_password, make_password
 from django.views import  View
 from django.shortcuts import render , redirect , HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import  AuthenticationForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from django.core.cache import cache
 from django.http import JsonResponse
+from .forms import UserCreateForm
 import json
 import datetime
 from .models import * 
@@ -53,13 +54,14 @@ def login_request(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST or None)  
+        form = UserCreateForm(request.POST or None)  
         if form.is_valid():  
             form.save()  
             messages.success(request, 'Account created successfully')
             return redirect("login")  
     else:
-        form = UserCreationForm()
+        form = UserCreateForm()
+       
     return render(request, 'store/register.html', context={"form":form})
 
 
@@ -143,3 +145,5 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
+
+
