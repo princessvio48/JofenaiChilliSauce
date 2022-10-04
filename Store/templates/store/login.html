@@ -26,7 +26,15 @@
                 <h3 class="text-clr-white">JofenaiPilipiliSauce</h3>
             </div>
             <form method="POST">
-                {% csrf_token %} {{form.as_p}}
+                {% csrf_token %} 
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {{form.as_p}}
 
                 <input type="submit" value="Login">
             </form>

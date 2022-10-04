@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import  check_password, make_password
 from django.views import  View
 from django.shortcuts import render , redirect , HttpResponseRedirect
-from django.contrib.auth.forms import  AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from django.core.cache import cache
@@ -61,7 +61,7 @@ def register(request):
             return redirect("login")  
     else:
         form = UserCreateForm()
-       
+        print(form)
     return render(request, 'store/register.html', context={"form":form})
 
 
