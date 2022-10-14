@@ -13,7 +13,9 @@ import json
 import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
- 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def index(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -24,6 +26,13 @@ def index(request):
 
     products = Product.objects.all()
     context = {'product':products, 'cartItems':cartItems}
+    
+    #cart details
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
     return render(request, "store/index.html",context)
 
 
@@ -71,6 +80,7 @@ def logout_request(request):
     return redirect("/")
 
 
+@csrf_exempt
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -81,6 +91,7 @@ def cart(request):
 
 
 
+@csrf_exempt
 def checkout(request):
 	data = cartData(request)
 	
@@ -91,6 +102,7 @@ def checkout(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
 
+@csrf_exempt
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
@@ -117,6 +129,7 @@ def updateItem(request):
 
 	return JsonResponse('Item was added', safe=False)
 
+@csrf_exempt
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
