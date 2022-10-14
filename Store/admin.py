@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 class OrderAdmin(admin.ModelAdmin):
     #fields = ['retail', 'order_date','order_status','complete']
-    list_display = ('user','date_ordered','order_status','complete','payment_reference')
+    list_display = ('user','date_ordered','date_updated ','order_status','complete','payment_reference')
 class OrderProductAdmin(admin.ModelAdmin):
     #fields = ['retail', 'order_date','order_status','complete']
     list_display = ('product','order','quantity','created_at','updated_at')
