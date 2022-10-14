@@ -46,7 +46,7 @@
                         <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" name="country" placeholder="Zip code..">
+                        <input class="form-control" type="text" name="country" placeholder="Country..">
                     </div>
                 </div>
                 <div>
@@ -155,6 +155,10 @@
             'zipcode': null,
         }
 
+        var paymentInfo = {
+            'reference': null,
+        }
+
         if (shipping != 'False') {
             shippingInfo.address = form.address.value
             shippingInfo.city = form.city.value
@@ -167,6 +171,7 @@
             userFormData.email = form.email.value
         }
 
+        paymentInfo.reference = form.reference.value
         console.log('Shipping Info:', shippingInfo)
         console.log('User Info:', userFormData)
 
@@ -179,7 +184,8 @@
                 },
                 body: JSON.stringify({
                     'form': userFormData,
-                    'shipping': shippingInfo
+                    'shipping': shippingInfo,
+                    'payment': paymentInfo
                 }),
 
             })

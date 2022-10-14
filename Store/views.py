@@ -131,32 +131,35 @@ def updateItem(request):
 
 @csrf_exempt
 def processOrder(request):
-	transaction_id = datetime.datetime.now().timestamp()
-	data = json.loads(request.body)
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+    reference = data['payment']['reference']
+    print("reference: ", reference)
 
-	if request.user.is_authenticated:
-		user = request.user
-		order, created = Order.objects.get_or_create(user=user, complete=False)
-	else:
-		user, order = guestOrder(request, data)
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+    else:
+        user, order = guestOrder(request, data)
 
-	total = float(data['form']['total'])
-	order.transaction_id = transaction_id
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+    order.payment_reference = reference
 
-	if total == order.get_cart_total:
-		order.complete = True
-	order.save()
+    if total == order.get_cart_total:
+        order.complete = True
+    order.save()
 
-	if order.shipping == True:
-		ShippingAddress.objects.create(
-		user=user,
-		order=order,
-		address=data['shipping']['address'],
-		city=data['shipping']['city'],
-		state=data['shipping']['state'],
-		zipcode=data['shipping']['zipcode'],
-		)
+    if order.shipping == True:
+        ShippingAddress.objects.create(
+        user=user,
+        order=order,
+        address=data['shipping']['address'],
+        city=data['shipping']['city'],
+        state=data['shipping']['state'],
+        zipcode=data['shipping']['zipcode'],
+        )
 
-	return JsonResponse('Payment submitted..', safe=False)
+    return JsonResponse('Payment submitted..', safe=False)
 
 

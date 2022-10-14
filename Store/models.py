@@ -35,6 +35,7 @@ class Order(models.Model):
     order_status = models.BooleanField(default=True)
     complete = models.BooleanField(default=False) 
     transaction_id = models.CharField(max_length = 100, null = True)
+    payment_reference = models.CharField(max_length = 25, null = True)
 
     def __str__(self):
             return str(self.id)
