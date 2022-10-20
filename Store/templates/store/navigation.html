@@ -1,0 +1,85 @@
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
+<!-- Start Navigation -->
+{%load static%}
+<div class="header">
+    <!-- Main header -->
+    <div class="main_header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-4">
+                    <a class="nav-brand" href="#">
+                        <img src="{%static 'img/logo.png'%}" class="logo" alt="" />
+                    </a>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-9 col-8">
+
+
+                    <!-- Show on Desktop -->
+                    <div class="blocks shop_cart d-none d-xl-block d-lg-block">
+                        <div class="single_shop_cart">
+                            <div class="ss_cart_left">
+                                <a href="javascript:void(0)" class="cart_box"><i class="lni lni-phone"></i></a>
+                            </div>
+                            <div class="ss_cart_content">
+                                <strong>Call Us:</strong>
+                                <span>+255 686 856 006</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header_nav">
+        <div class="container">
+            <div class="row align-item-center">
+
+                <div class="col-lg-9 col-md-8 col-sm-4 col-2">
+                    <nav id="navigation" class="navigation navigation-landscape">
+                        <div class="nav-header">
+                            <div class="nav-toggle"></div>
+                        </div>
+                        <div class="nav-menus-wrapper" style="transition-property: none;">
+                            <ul class="nav-menu">
+                                <li class="active"><a href="{%url 'index'%}">Home</a></li>
+                                <li><a href="{% url 'about'%}">About Us</a></li>
+                                <li><a href="{% url 'products'%}">Products</a></li>
+                                <li><a href="{% url 'contact_us'%}">Contact</a></li>
+                                <li><a href="{% url 'order'%}">Order</a></li>
+                                <li>
+                                    <a href="#item-product" style="display: flex;">
+                                        <img id="cart-icon" src="{% static 'images/cart.png' %}">
+                                        <p id="cart-total">{{cartItems}}</p>
+                                    </a>
+
+                                </li>
+                            </ul>
+                            <ul class="nav-menu" style="float:right;">
+                                {% if user.is_authenticated %}
+                                <li>
+                                    <h2 style="margin-top: 10px; color:white">@{{user.username}}</h2>
+                                </li>
+                                <li> <a href="{% url 'logout' %}">logout</a></li>
+                                {% else %}
+                                <li> <a href="{% url 'login' %}">sign in</a></li>
+                                <li> <a href="{% url 'register' %}">sing up</a></li>
+                                {% endif %}
+
+
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- End Navigation -->
+<div class="clearfix"></div>

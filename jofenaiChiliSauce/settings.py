@@ -76,27 +76,28 @@ WSGI_APPLICATION = 'jofenaiChiliSauce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'pilipili',
-#         'PASSWORD': 'Catherine@27',
-#         'USER': 'postgres',
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pilipili',
-        'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Catherine@27',
+        'USER': 'postgres',
         'HOST': 'localhost',
-        'PORT': '3306',
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pilipili',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+# AUTHENTICATION_BACKENDS = ['Store.backends.EmailAuthBackend','django.contrib.auth.backends.ModelBackend',]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

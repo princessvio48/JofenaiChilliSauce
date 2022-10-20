@@ -21,44 +21,39 @@ def index(request):
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
-    print(order)
-    print(items )
-
     products = Product.objects.all()
     context = {'product':products, 'cartItems':cartItems}
     
-    #cart details
-    data = cartData(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
     context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
     return render(request, "store/index.html",context)
+  
 
 
 def login_request(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request=request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+        username = request.POST['username']
+        password = request.POST['password2']
+        try:
+            user = authenticate(username=User.objects.get(email=username), password=password)
+        except:
             user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                #check if is super user
-                if user.is_superuser:
-                    messages.success(request, f"You are now logged in as {username}")
-                    return redirect('/admin')
-                else:
-                    messages.success(request, f"You are now logged in as {username}")
-                    return redirect('/')
+        
+        if user is not None:
+            print(user)
+            login(request, user)
+            #check if is super user
+            if user.is_superuser:
+                messages.success(request, f"You are now logged in as {username}")
+                return redirect('/admin')
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.success(request, f"You are now logged in as {username}")
+                return redirect('/')
         else:
             messages.error(request, "Invalid username or password.")
+       
         
-    form = AuthenticationForm()
-    return render(request, 'store/login.html', context={"form":form})
+    
+    return render(request, 'store/login.html')
 
 
 def register(request):
@@ -107,8 +102,8 @@ def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
 	action = data['action']
-	print('Action:', action)
-	print('Product:', productId)
+	# print('Action:', action)
+	# print('Product:', productId)
 
 	user = request.user
 	product = Product.objects.get(id=productId)
@@ -134,7 +129,7 @@ def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
     reference = data['payment']['reference']
-    print("reference: ", reference)
+    # print("reference: ", reference)
 
     if request.user.is_authenticated:
         user = request.user
@@ -162,4 +157,48 @@ def processOrder(request):
 
     return JsonResponse('Payment submitted..', safe=False)
 
+def orderPlace(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    
+    products = Product.objects.all()
+   
+    context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
+    return render(request, 'store/orderPlace.html',context)
+
+
+def about(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    products = Product.objects.all()
+    context = {'product':products, 'cartItems':cartItems}
+    
+    context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
+    return render(request, 'store/about_us.html',context)
+
+def products(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    products = Product.objects.all()
+    context = {'product':products, 'cartItems':cartItems}
+    
+    context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
+    return render(request, 'store/products.html',context)
+
+def contact_us(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    products = Product.objects.all()
+    context = {'product':products, 'cartItems':cartItems}
+    
+    context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
+    return render(request, 'store/contact_us.html',context)
 

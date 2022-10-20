@@ -6,41 +6,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registration</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css'%}">
     <!-- TITLE OF PAGE -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!-- CONTENT GOES HERE -->
 </head>
 
 <body>
-    <div class="flex bg-clr-blue-gradient  height-div">
-
-        <div class="my-5 m-auto bg-clr-blue ">
-            <img src="{% static 'images/pilipili3.jpg' %}" alt="" class="bg-img">
+    <img src="{% static 'img/banner3.jpg'%}" alt="" class="background-img">
+    <div class="form-container black-bg-a">
+        <div class="imgcontainer">
+            <img src="/static/images/icons/profile.png" alt="Avatar" class="avatar">
         </div>
-        <div class="register my-5 mx-auto ">
+        <form action="{% url 'login'%}" method="post">
+            {% csrf_token%} {% if messages %} {% for message in messages %}
 
-            <div class="text-align-center bg-clr-teal ">
-                <h3 class="text-clr-white">JofenaiPilipiliSauce</h3>
+            <span class="helptext ">{{ message }}</span> {% endfor %} {% endif %}
+
+
+
+            <div class="form-control">
+                <img src="{%static 'images/icons/icons8-username-48.png'%}" alt="" width="40" height="40">
+                <input type="text" placeholder="Username or Email or PhoneNumber" id="username" name="username">
+
             </div>
-            <form method="POST">
-                {% csrf_token %} 
-                {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                    <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                {{form.as_p}}
 
-                <input type="submit" value="Login">
-            </form>
-            have an account? <a href="{% url 'register' %}"><strong>register here</strong></a>
-        </div>
+            <div class="form-control">
+                <img src="{%static 'images/icons/download (1).svg'%}" alt="" width="40" height="40">
+                <input type="password" placeholder="Password" id="password2" name="password2">
+            </div>
+
+            <div class="form-control my-3">
+                <img src="{%static 'images/icons/log-in.png'%}" alt="" width="40" height="40">
+                <input type="submit" value="Login" class="black-bg btn-submit">
+            </div>
+            <div class="container black-bg">
+                <p class="form-control">have no account?. <a href="{%url 'register'%}" class="login-link">Register</a>
+                    <span style="margin-left:10%">
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                          </label>
+                    </span>
+                </p>
+
+                <button type="button" onclick="home()" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#" class="login-link">password?</a></span>
+            </div>
+
+        </form>
+
     </div>
+    <script src="{% static 'js/login_register.js'%}"></script>
 </body>
 
 </html>

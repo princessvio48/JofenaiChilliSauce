@@ -219,11 +219,10 @@ h6 {
 /***************************************************************/
 
 .bg-img {
-    position: fixed;
-    left: 0%;
-    height: 90vh;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
+    position: fixed;
 }
 
 .login,
@@ -279,4 +278,3 @@ input[type=submit] {
     justify-content: space-between;
     padding: 1px 5px;
 }
-

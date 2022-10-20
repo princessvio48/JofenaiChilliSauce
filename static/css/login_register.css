@@ -1,0 +1,284 @@
+    /**********************************************************************/
+    /*              RESET DEFAULT                                        */
+    /*********************************************************************/
+    /* Box sizing */
+    
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    /* Reset margins */
+    
+    *,
+    p,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    picture,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    /**********************************************************************/
+    /*              COLOR VARIABLE                                       */
+    /*********************************************************************/
+    
+     :root {
+        --black-bg: 12, 45, 45;
+        --white: 255 255 255;
+        --link-color: 90 89 255;
+    }
+    /**********************************************************************/
+    /*               COLOR CLASS                                          */
+    /*********************************************************************/
+    
+    .black-bg-a {
+        background-color: rgba(var(--black-bg), 0.5);
+        color: rgb(var(--white))
+    }
+    
+    .black-bg {
+        background-color: rgb(var(--black-bg));
+        color: rgb(var(--white))
+    }
+    /**********************************************************************/
+    /*                    FORMS                                          */
+    /*********************************************************************/
+    /* style of help text */
+    
+    .helptext {
+        margin-left: 11%;
+        width: 89%;
+        display: block;
+        padding: 4px 6px;
+        background-color: #f44336;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .success {
+        background-color: green;
+    }
+    
+    .login-link {
+        color: rgb(var(--link-color));
+    }
+    /* style of input elements */
+    
+    input[type='text'],
+    input[type='password'],
+    input[type='email'] {
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        outline: none;
+        margin: 1px 0px;
+    }
+    
+    input[type='submit'] {
+        padding: 14px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+    
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+    
+    .container {
+        padding: 16px;
+    }
+    
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+    
+    button:hover {
+        opacity: 0.8;
+    }
+    /* Set a style for all buttons */
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    /* Extra styles for the cancel button */
+    
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+    /**********************************************************************/
+    /*                    UTILITY CLASS                                   */
+    /*********************************************************************/
+    /* form control div */
+    
+    .form-control {
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    /*submit separation*/
+    
+    .my-3 {
+        margin: 5px 0px;
+    }
+    /* background image*/
+    
+    .background-img {
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        position: fixed;
+    }
+    
+    .flex {
+        display: flex;
+    }
+    
+    .form-container {
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 12px;
+    }
+    /**********************************************************************/
+    /*                    MEDIA QUERY                                    */
+    /*********************************************************************/
+    /* Extra small devices (phones, 600px and down) */
+    
+    @media only screen and (max-width: 600px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+        .helptext {
+            width: 91%;
+            margin-left: 9%;
+        }
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    
+    @media only screen and (min-width: 600px) {
+        .form-container {
+            margin-top: 5%;
+            width: 400px;
+            margin: auto;
+        }
+        /* For tablets: */
+        .col-s-1 {
+            width: 8.33%;
+        }
+        .col-s-2 {
+            width: 16.66%;
+        }
+        .col-s-3 {
+            width: 25%;
+        }
+        .col-s-4 {
+            width: 33.33%;
+        }
+        .col-s-5 {
+            width: 41.66%;
+        }
+        .col-s-6 {
+            width: 50%;
+        }
+        .col-s-7 {
+            width: 58.33%;
+        }
+        .col-s-8 {
+            width: 66.66%;
+        }
+        .col-s-9 {
+            width: 75%;
+        }
+        .col-s-10 {
+            width: 83.33%;
+        }
+        .col-s-11 {
+            width: 91.66%;
+        }
+        .col-s-12 {
+            width: 100%;
+        }
+    }
+    /* Medium devices (landscape tablets, 768px and up) */
+    
+    @media only screen and (min-width: 768px) {}
+    /* Large devices (laptops/desktops, 992px and up) */
+    
+    @media only screen and (min-width: 992px) {
+        .form-container {
+            margin-top: 5%;
+            width: 400px;
+            margin-right: 5%;
+            float: right;
+        }
+        .register.form-container {
+            margin-top: 1%;
+        }
+        /* For desktop: */
+        .col-1 {
+            width: 8.33%;
+        }
+        .col-2 {
+            width: 16.66%;
+        }
+        .col-3 {
+            width: 25%;
+        }
+        .col-4 {
+            width: 33.33%;
+        }
+        .col-5 {
+            width: 41.66%;
+        }
+        .col-6 {
+            width: 50%;
+        }
+        .col-7 {
+            width: 58.33%;
+        }
+        .col-8 {
+            width: 66.66%;
+        }
+        .col-9 {
+            width: 75%;
+        }
+        .col-10 {
+            width: 83.33%;
+        }
+        .col-11 {
+            width: 91.66%;
+        }
+        .col-12 {
+            width: 100%;
+        }
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    
+    @media only screen and (min-width: 1200px) {}
