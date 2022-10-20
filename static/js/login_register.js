@@ -215,14 +215,12 @@ var validation_login = () => {
     var username = document.validate.username.value;
     var password = document.validate.password2;
     if (username == null || username == "") {
-        btn_help_text[1].classList.remove("hidden");
-        btn_help_text[0].classList.add("hidden");
-        btn_help_text[1].innerHTML = "Username cannot be empty";
+        btn_help_text[0].classList.remove("hidden");
+        btn_help_text[0].innerHTML = "Username cannot be empty";
         return false;
     } else if (password == null || password == "") {
-        btn_help_text[2].classList.remove("hidden");
-        btn_help_text[0].classList.add("hidden");
-        btn_help_text[2].innerHTML = "Username cannot be empty";
+        btn_help_text[1].classList.remove("hidden");
+        btn_help_text[1].innerHTML = "Username cannot be empty";
         return false;
     } else {
         return true;

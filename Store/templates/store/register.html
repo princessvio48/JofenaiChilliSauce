@@ -22,7 +22,9 @@
         </div>
         <form action="{% url 'register'%}" name="validate" id="form" onsubmit="return validation()" method="post">
             <!-- <form action="./index.html" name="validate" id="form"> -->
-            {% csrf_token%}
+            {% csrf_token%} {% if messages %} {% for message in messages %}
+
+            <span class="helptext-1">{{ message }}</span> {% endfor %} {% endif %}
             <div class="form-control">
                 <img src="{%static 'images/icons/icons8-username-48.png'%}" alt="" width="40" height="40">
                 <input type="text" placeholder="Username" id="username1" name="username1">

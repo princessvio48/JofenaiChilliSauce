@@ -23,7 +23,7 @@
         <form action="{% url 'login'%}" method="post" name="validate" onsubmit="return validation_login()">
             {% csrf_token%} {% if messages %} {% for message in messages %}
 
-            <span class="helptext ">{{ message }}</span> {% endfor %} {% endif %}
+            <span class="helptext-1 ">{{ message }}</span> {% endfor %} {% endif %}
 
 
 
