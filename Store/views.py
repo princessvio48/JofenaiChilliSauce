@@ -23,7 +23,6 @@ def index(request):
     items = data['items']
     products = Product.objects.all()
     context = {'product':products, 'cartItems':cartItems}
-    
     context = {'items':items, 'order':order, 'cartItems':cartItems,'product':products}
     return render(request, "store/index.html",context)
   
@@ -39,7 +38,6 @@ def login_request(request):
             user = authenticate(username=username, password=password)
         
         if user is not None:
-            print(user)
             login(request, user)
             #check if is super user
             if user.is_superuser:
@@ -57,15 +55,30 @@ def login_request(request):
 
 
 def register(request):
+    
     if request.method == 'POST':
-        form = UserCreateForm(request.POST or None)  
-        if form.is_valid():  
-            form.save()  
-            messages.success(request, 'Account created successfully')
-            return redirect("login")  
+        username = request.POST['username1']
+        email = request.POST['email']
+        phone_nummber = request.POST['phonenumber']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                messages.info(request,'Username Taken')
+                return redirect('register')
+            elif User.objects.filter(email=email).exists():
+                messages.info(request,'email already exist')
+                return redirect('register')
+            else:
+                user = User.objects.create_user(username=username,email=email,password=password1)
+                user.save()
+                return redirect('login')
+        else:
+            messages.info(request,'password not match')
+            return redirect('register')
     else:
-        form = UserCreateForm()
-    return render(request, 'store/register.html', context={"form":form})
+        return render(request,'store/register.html')
+   
 
 
 def logout_request(request):

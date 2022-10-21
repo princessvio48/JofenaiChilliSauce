@@ -52,7 +52,8 @@
     /*********************************************************************/
     /* style of help text */
     
-    .helptext {
+    .helptext,
+    .helptext-1 {
         margin-left: 11%;
         width: 89%;
         display: block;

@@ -20,10 +20,10 @@
         <div class="imgcontainer">
             <img src="/static/images/icons/profile.png" alt="Avatar" class="avatar">
         </div>
-        <form action="{% url 'login'%}" method="post">
+        <form action="{% url 'login'%}" method="post" name="validate" onsubmit="return validation_login()">
             {% csrf_token%} {% if messages %} {% for message in messages %}
 
-            <span class="helptext ">{{ message }}</span> {% endfor %} {% endif %}
+            <span class="helptext-1 ">{{ message }}</span> {% endfor %} {% endif %}
 
 
 
@@ -32,12 +32,12 @@
                 <input type="text" placeholder="Username or Email or PhoneNumber" id="username" name="username">
 
             </div>
-
+            <span class="helptext hidden"></span>
             <div class="form-control">
                 <img src="{%static 'images/icons/download (1).svg'%}" alt="" width="40" height="40">
                 <input type="password" placeholder="Password" id="password2" name="password2">
             </div>
-
+            <span class="helptext hidden"></span>
             <div class="form-control my-3">
                 <img src="{%static 'images/icons/log-in.png'%}" alt="" width="40" height="40">
                 <input type="submit" value="Login" class="black-bg btn-submit">
