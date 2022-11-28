@@ -51,58 +51,68 @@
 <!-- CARTS -->
 {% if items %}
 <div class="row mx-1" id="item-product">
-    <div class="col-lg-12 col-md-4 col-sm-6">
-        <div class="box-element">
+    <div class="col-lg-12 col-md-4 col-sm-6 table-responsive">
 
-            <br>
-            <br>
+        <div class="box-element table-responsive">
             <table class="table">
-                <tr>
-                    <th>
-                        <h5>Items: <strong>{{order.get_cart_items}}</strong></h5>
-                    </th>
-                    <th>
-                        <h5>Total:<strong> {{order.get_cart_total|floatformat:2}}TZS</strong></h5>
-                    </th>
-                    <th>
-                        <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
-                    </th>
-                </tr>
-            </table>
 
+                <tbody>
+                    <tr>
+                        <th>
+                            <h5>Items: <strong>{{order.get_cart_items}}</strong></h5>
+                        </th>
+                        <th>
+                            <h5>Total:<strong> {{order.get_cart_total|floatformat:2}}TZS</strong></h5>
+                        </th>
+                        <th>
+                            <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+                        </th>
+
+                </tbody>
+            </table>
         </div>
 
         <br>
-        <div class="box-element">
-            <div class="cart-row">
-                <div style="flex:2"></div>
-                <div style="flex:2"><strong>Item</strong></div>
-                <div style="flex:1"><strong>Price</strong></div>
-                <div style="flex:1"><strong>Quantity</strong></div>
-                <div style="flex:1"><strong>Total</strong></div>
-            </div>
-            {% for item in items %}
-            <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
-                <div style="flex:2">
-                    <p>{{item.product.name}}</p>
-                </div>
-                <div style="flex:1">
-                    <p>{{item.product.price|floatformat:2}}TZS</p>
-                </div>
-                <div style="flex:1">
-                    <p class="quantity">{{item.quantity}}</p>
-                    <div class="quantity">
-                        <button data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart">+</button>
+        <div class="box-element table-responsive">
 
-                        <button data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart">-</button>
-                    </div>
-                </div>
-                <div style="flex:1">
-                    <p>{{item.get_total|floatformat:2}}TZS</p>
-                </div>
-            </div>
-            {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"><strong>Item</strong></th>
+                        <th scope="col"><strong>Price</strong></th>
+                        <th scope="col"><strong>Quantity</strong></th>
+                        <th scope="col"><strong>Total</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for item in items %}
+                    <tr>
+                        <th scope="row"><img class="row-image" src="{{item.product.imageURL}}"></th>
+                        <td>
+                            <p>{{item.product.name}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.product.price|floatformat:2}}TZS</p>
+                        </td>
+                        <td>
+                            <p class="quantity">{{item.quantity}}</p>
+                            <div class="quantity">
+                                <button data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart">+</button>
+
+                                <button data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart">-</button>
+                            </div>
+                        </td>
+                        <td>
+                            <p>{{item.get_total|floatformat:2}}TZS</p>
+                        </td>
+                    </tr>
+
+
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

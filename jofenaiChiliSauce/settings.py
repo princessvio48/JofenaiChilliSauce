@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q$z(*np1i_+0p6!%&fnk0_zrxmf)&wxix=t&t@zug2ml%suczd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.207.247.86']
+ALLOWED_HOSTS = ['15.207.247.86','127.0.0.1','192.168.43.54']
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,17 +74,26 @@ WSGI_APPLICATION = 'jofenaiChiliSauce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pilipili',
+#         'PASSWORD': 'Jofenai@2022#',
+#         'USER': 'jofenailyne',
+#         'HOST': 'localhost',
+#         'PORT': ''
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pilipili',
-        'PASSWORD': 'Jofenai@2022#',
-        'USER': 'jofenailyne',
+        'PASSWORD': 'Catherine@27',
+        'USER': 'postgres',
         'HOST': 'localhost',
         'PORT': ''
     }
 }
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -130,15 +139,33 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+if DEBUG:
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR,'static')
+    ]
 
-STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    #create the urls and folders for the media
 
-#create the urls and folders for the media
+    MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/media/'
+else:
+    STATIC_URL = '/static/'              # Used to include static resources in web pages
+    STATIC_ROOT = '/var/www/static/'     # Used to get static resources from web server
+    MEDIA_URL = '/media/'                # Used to include media items in web pages
+    MEDIA_ROOT = '/var/www/media/'       # Used to get media items from web server
+    # Default primary key field type
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
