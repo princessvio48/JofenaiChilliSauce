@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-q$z(*np1i_+0p6!%&fnk0_zrxmf)&wxix=t&t@zug2ml%suczd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['15.207.247.86','127.0.0.1','192.168.43.54']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -145,6 +147,7 @@ if DEBUG:
         os.path.join(BASE_DIR,'static')
     ]
 
+
     STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
     #create the urls and folders for the media
@@ -159,7 +162,7 @@ else:
     # Default primary key field type
     # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
