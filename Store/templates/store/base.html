@@ -71,43 +71,7 @@
 </head>
 
 <body class="organic-theme">
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <a class="navbar-brand" href="http://www.jofenaichilisauce.co.tz/">JofenaiPilipiliSauce</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">Store <span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-            <div class="form-inline my-2 my-lg-0">
-                {% if user.is_authenticated %}
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <h2 class="nav-link">@{{user.username}}</h2>
-                    </li>
-                </ul>
-                <a href="{% url 'logout' %}" class="btn btn-warning">logout</a> {% else %}
-
-                <a href="{% url 'login' %}" class="btn btn-warning">sign in</a>
-
-
-                <a href="{% url 'register' %}" class="btn btn-warning">sing up</a> {% endif %}
-
-                <a href="#item-product">
-                    <img id="cart-icon" src="{% static 'images/cart.png' %}">
-                </a>
-                <p id="cart-total">{{cartItems}}</p>
-
-            </div>
-        </div>
-    </nav> -->
+  
     {% include 'store/navigation.html'%}
 
     <!-- BLOCK CONTENT -->
@@ -122,7 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
     <script src="{%static 'js/jquery.min.js'%}"></script>
     <script src="{%static 'js/popper.min.js'%}"></script>
     <script src="{%static 'js/bootstrap.min.js'%}"></script>

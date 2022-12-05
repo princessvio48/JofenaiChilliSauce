@@ -75,27 +75,29 @@ WSGI_APPLICATION = 'jofenaiChiliSauce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'pilipili',
-#         'PASSWORD': 'Jofenai@2022#',
-#         'USER': 'jofenailyne',
-#         'HOST': 'localhost',
-#         'PORT': ''
-#     }
-# }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pilipili',
-        'PASSWORD': 'Catherine@27',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': ''
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'pilipili',
+            'PASSWORD': 'Catherine@27',
+            'USER': 'postgres',
+            'HOST': 'localhost',
+            'PORT': ''
+        }
     }
-}
+    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'pilipili',
+            'PASSWORD': 'Jofenai@2022#',
+            'USER': 'jofenailyne',
+            'HOST': 'localhost',
+            'PORT': ''
+        }
+    }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
