@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-4">
-                    <a class="nav-brand" href="#">
+                    <a class="nav-brand" href="{% url 'index'%}">
                         <img src="{% static 'img/logo.png' %}" class="logo" alt="" />
                     </a>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="nav-header">
                             <div class="nav-toggle"></div>
                         </div>
-                        <div class="nav-menus-wrapper" style="transition-property: none;">
+                        <div class="nav-menus-wrapper flex" style="transition-property: none;">
                             <ul class="nav-menu">
                                 <li class="active"><a href="{%url 'index'%}">Home</a></li>
                                 <li><a href="{% url 'about'%}">About Us</a></li>
@@ -51,14 +51,14 @@
                                 <li><a href="{% url 'contact_us'%}">Contact</a></li>
                                 <li><a href="{% url 'order'%}">Order</a></li>
                                 <li>
-                                    <a href="#item-product" style="display: flex;">
+                                    <a href="{% url "cart" %}" style="display: flex;">
                                         <img id="cart-icon" src="{% static 'images/cart.png' %}">
                                         <p id="cart-total">{{cartItems}}</p>
                                     </a>
 
                                 </li>
                             </ul>
-                            <ul class="nav-menu" style="float:right;">
+                            <ul class="nav-menu" style="float:right; ">
                                 {% if user.is_authenticated %}
                                 <li>
                                     <h2 style="margin-top: 10px; color:white">@{{user.username}}</h2>
